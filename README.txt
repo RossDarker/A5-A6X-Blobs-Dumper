@@ -44,7 +44,9 @@ To restore using your saved blobs:
 	•	Where the blobs.shsh are the blobs you've saved earlier using this method, and IPSW.ipsw is the one that matches the blobs.
 	•	And that's it, no need to use idevicerestore and any FirmwareBundles!
 
-Tutorial by RossDarker
+Bash scripts and this readme by RossDarker
 rossdark3r@gmail.com
 
 Thanks to dayt0n for Odysseus.
+Thanks to s0uthwest, encounter and tihmstar for TSSChecker.
+Thanks to pod2g, tom3q, planetbeing, geohot and posixninja for iRecovery.
