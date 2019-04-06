@@ -18,7 +18,7 @@ Step 3 (Downloading files):
 	•	This may take a several minutes to download everything, and the second IPSW will match your version and is used for saving the blobs.
 Step 4 (Stitching IPSW):
 	•	In terminal, run ./patchipsw <device model> <device IP>
-	•	Your device model is still the same one you saw in iTunes, and you can find your device's IP by going into Settings on the device. In Settings, open the Wi-Fi tab, and click on the (i) button next to the Wi-Fi network you are connected to, your device's IP is listed as "IP Address"
+	•	Your device model is still the same one you saw in iTunes, and you can find your device's IP by going into Settings on the device. In Settings, open the Wi-Fi tab, and click on the (i) or (>) button next to the Wi-Fi network you are connected to, your device's IP is listed as "IP Address"
 	•	An example command for this would be: ./patchipsw iPhone4,1 192.168.1.88
 	•	After running the command, you may be asked (yes/no), enter in yes.
 	•	You will now be asked for a password, the default password is "alpine", so type this in, as you type in the password, it will look like nothing is being typed in, but it actually is, don't worry, just press enter once you've typed "alpine" into the password box.
