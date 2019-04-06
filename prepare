@@ -1,0 +1,117 @@
+#!/bin/bash
+
+if [ $# -lt 2 ]; then
+    echo ""
+    echo "[DESCRIPTION]"
+    echo "Downloads correct IPSW's, Odysseus & FirmwareBundels"
+    echo ""
+    echo "[USAGE]"
+    echo "./prepare <device model> <ios version>"
+    echo ""
+    echo "[EXAMPLES]"
+    echo "./prepare iPad3,5 6.1.2"
+    echo "./prepare iPod5,1 9.1"
+    echo "./prepare iPhone4,1 8.4.1"
+    echo ""
+    exit
+fi
+if [ $# -gt 2 ]; then
+    echo "[ERROR] Too many arguments"
+    exit
+fi
+
+rm -r ~/Downloads/blobs
+mkdir ~/Downloads/blobs
+cd ~/Downloads/blobs
+
+if [ $1 = "iPhone4,1" ]; then
+    buildid="10B329"
+fi
+if [ $1 = "iPhone5,1" ]; then
+    buildid="10B329"
+fi
+if [ $1 = "iPhone5,2" ]; then
+    buildid="10B329"
+fi
+if [ $1 = "iPhone5,3" ]; then
+    buildid="11B511"
+fi
+if [ $1 = "iPhone5,4" ]; then
+    buildid="11B651"
+fi
+if [ $1 = "iPod5,1" ]; then
+    buildid="10B329"
+fi
+if [ $1 = "iPad2,1" ]; then
+    buildid="10B329"
+fi
+if [ $1 = "iPad2,2" ]; then
+    buildid="11D257"
+fi
+if [ $1 = "iPad2,3" ]; then
+    buildid="12H321"
+fi
+if [ $1 = "iPad2,4" ]; then
+    buildid="10B329"
+fi
+if [ $1 = "iPad2,5" ]; then
+    buildid="10B329"
+fi
+if [ $1 = "iPad2,6" ]; then
+    buildid="12H321"
+fi
+if [ $1 = "iPad2,7" ]; then
+    buildid="12H321"
+fi
+if [ $1 = "iPad3,1" ]; then
+    buildid="10B146"
+fi
+if [ $1 = "iPad3,2" ]; then
+    buildid="12H321"
+fi
+if [ $1 = "iPad3,3" ]; then
+    buildid="10B329"
+fi
+if [ $1 = "iPad3,4" ]; then
+    buildid="10B329"
+fi
+if [ $1 = "iPad3,5" ]; then
+    buildid="12H321"
+fi
+if [ $1 = "iPad3,6" ]; then
+    buildid="10B329"
+fi
+
+model=$1
+ios=$2
+echo "Calculating BuildID for iOS $ios"
+curl -# -o "tsschecker.zip" -L "https://github.com/s0uthwest/tsschecker/releases/download/345/tsschecker_macOS_v345.zip"
+unzip -qq tsschecker.zip
+mainbdid=`./tsschecker -d $model -i $ios | grep "opening Buildmanifest for" | cut -d _ -f 3`
+mainbdid=`./tsschecker -d $model -i $ios | grep "opening Buildmanifest for" | cut -d _ -f 3`
+mainbdid=`./tsschecker -d $model -i $ios | grep "opening Buildmanifest for" | cut -d _ -f 3`
+echo $mainbdid > mainbdid
+echo "Build ID for extraction iOS: $buildid"
+echo "Build ID for current iOS: $mainbdid"
+echo "Model: $model"
+
+echo "Downloading correct IPSW"
+curl -# -o "$model_$buildid.ipsw" -L "https://api.ipsw.me/v4/ipsw/download/$model/$buildid"
+echo "Downloaded IPSW for extraction"
+if [ $buildid = $mainbdid ]; then
+	echo "BuildIDs are the same"
+else
+	echo "BuildIDs are different, downloading IPSW for iOS $ios as well"
+	curl -# -o "$model_$mainbdid.ipsw" -L "https://api.ipsw.me/v4/ipsw/download/$model/$mainbdid"
+fi
+echo "Downloading Odysseus & FirmwareBundles"
+curl -# -o odysseus.zip https://dayt0n.com/odysseus/odysseus-0.999.zip
+unzip -qq odysseus.zip
+### rm __MACOSX
+rm odysseus.zip
+curl -# -o FirmwareBundles.zip https://rossdarker.github.io/o/FirmwareBundles.zip
+unzip -qq FirmwareBundles.zip
+rm FirmwareBundles.zip
+rm -r odysseus-0.999.0/macos/FirmwareBundles
+mv FirmwareBundles odysseus-0.999.0/macos/
+

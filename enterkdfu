@@ -1,0 +1,44 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+    echo ""
+    echo "[DESCRIPTION]"
+    echo "Put device into kDFU mode using pwnediBSS"
+    echo ""
+    echo "[USAGE]"
+    echo "./enterkdfu <device IP>"
+    echo ""
+    echo "[EXAMPLE]"
+    echo "./enterkdfu 192.168.1.88"
+    echo ""
+    exit
+fi
+if [ $# -gt 1 ]; then
+    echo "[ERROR] Too many arguments"
+    exit
+fi
+
+ip=$1
+
+cd ~/Downloads/blobs/odysseus-0.999.0/macos
+
+if [ -e "pwnediBSS" ]; then
+	echo ""
+	echo "Found pwnediBSS"
+else
+	echo ""
+	echo "Did not find pwnediBSS, have you ran ./patchipsw?"
+	exit 1	
+fi
+echo ""
+echo "Attempting to enter kDFU"
+echo ""
+echo "If asked, type yes, then the default password is \"alpine\""
+echo ""
+echo "WHEN YOUR DEVICE TURNS OFF, (RE)PLUG YOUR DEVICE INTO YOUR COMPUTER, PRESS CONTROL+C, AND PROCEED TO \"./dumpblobs\". ALSO DON'T TOUCH ITUNES"
+echo ""
+./sshtool -k ../kloader -b pwnediBSS -p 22 $ip
+echo ""
+echo "IF YOUR DEVICE DID NOT TURN OFF, INSTALL \"Core Utilities\" AND \"Core Utilities (/bin)\" AND \"OpenSSH\" FROM CYDIA AND THEN RUN \"./enterkdfu\" AGAIN"
+echo ""
+
