@@ -1,14 +1,14 @@
 Dumping Onboard Blobs on A5 to A6X devices
 
 Note that Step 6 only works on Mac OS X versions that are Yosemite (10.10), or below.
-Confirmed to work on Mountain Lion (10.8) and Mavericks (10.9)
+Confirmed to work on Mountain Lion (10.8), Mavericks (10.9) and Yosemite (10.10)
 
 Step 1 (Preparing 1):
 	•	On your device install these packages from Cydia: "Core Utilities", "Core Utilities (/bin)", and "OpenSSH"
 Step 2 (Device Info):
 	•	Open up a terminal window
-	•	Cd into where the scripts are: e.g. cd ~/Downloads/dumpblobs/
-	•	Now find the model of your device, connect device to computer, open iTunes, open the tab of your device, and click on the Serial Number, until "Model Identifier" shows up, this is your device model
+	•	Cd into where the scripts are: e.g. cd ~/Downloads/A5-A6X-Blobs-Dumper-master/
+	•	Now find the model of your device, connect device to computer, open iTunes, open the tab of your device, and click on the Serial Number, until "Model Identifier" or “Product Type” shows up, this is your device model
 	•	Also note down the iOS version your device is currently on for later!
 Step 3 (Downloading files):
 	•	In terminal, run ./prepare <device model> <ios version>
@@ -33,8 +33,9 @@ Step 6 (Dumping the blobs):
 	•	Go back to your terminal window, and press Control + C on your keyboard.
 	•	Now run ./dumpblobs <device model> <ios version>
 	•	Where device model is your device's model that you got at the start, and iOS version is the version of iOS your device is currently running, for example, if I had an iPhone 4S running iOS 8.4.1, and I wanted to dump the blobs for it, I'd type: ./dumpblobs iPhone4,1 8.4.1
-	•	This will make a minute or too, and if you are on Mac OS X El Capitan or above, this may not work, and you'll just have to reboot your device, this only seems to work on Yosemite or below. It definitely works on Mountain Lion (10.8), and Mavericks (10.9)
-	•	You should now validate the blobs with img4tool
+	•	This will make a minute or too, and if you are on Mac OS X El Capitan or above, this may not work, and you'll just have to reboot your device, this step only seems to work on Yosemite or below. It definitely works on Mountain Lion (10.8), Mavericks (10.9), and Yosemite (10.10)
+	•	Your Blobs will be saved onto your Desktop (~/Desktop)
+	•	Don’t lose this file, email it to yourself, upload it to cloud services, burn it to a CD, back it up. Never lose it!
 
 
 To restore using your saved blobs:

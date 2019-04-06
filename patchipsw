@@ -121,7 +121,7 @@ echo "Extracting pwned iBSS..."
 echo "Extracting pwned iBEC..."
 mv `unzip -j custom.ipsw 'Firmware/dfu/iBEC*' | awk '/inflating/{print $2}'` pwnediBEC
 if [ $buildid = $mainbdid ]; then
-	mv "$downloaded.ipsw" "current.ipsw"
+	mv "downloaded.ipsw" "current.ipsw"
 fi
 echo "Done"
 

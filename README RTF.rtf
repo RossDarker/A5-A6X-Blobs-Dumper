@@ -1,10 +1,10 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
 {\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 HelveticaNeue;
 }
-{\colortbl;\red255\green255\blue255;\red110\green5\blue2;\red52\green52\blue52;\red52\green52\blue52;
-}
-{\*\expandedcolortbl;;\cssrgb\c51239\c6511\c0;\csgenericrgb\c20392\c20392\c20392;\csgray\c26515;
-}
+{\colortbl;\red255\green255\blue255;\red110\green5\blue2;\red0\green0\blue0;\red52\green52\blue52;
+\red52\green52\blue52;}
+{\*\expandedcolortbl;;\cssrgb\c51239\c6511\c0;\cssrgb\c0\c0\c0\cname textColor;\csgenericrgb\c20392\c20392\c20392;
+\csgray\c26515;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
 {\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
@@ -20,7 +20,7 @@
 
 \fs38 \ulnone \
 \cf2 Note that Step 6 only works on Mac OS X versions that are Yosemite (10.10), or below.\
-Confirmed to work on Mountain Lion (10.8) and Mavericks (10.9)\cf0 \
+Confirmed to work on Mountain Lion (10.8), Mavericks (10.9) and Yosemite (10.10)\cf0 \
 
 \fs48 \ul \
 
@@ -36,8 +36,10 @@ Confirmed to work on Mountain Lion (10.8) and Mavericks (10.9)\cf0 \
 \pard\tx220\tx720\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li720\fi-720\pardirnatural\partightenfactor0
 \ls2\ilvl0
 \fs28 \cf0 {\listtext	\uc0\u8226 	}Open up a terminal window\
-{\listtext	\uc0\u8226 	}Cd into where the scripts are: e.g. cd ~/Downloads/dumpblobs/\
-{\listtext	\uc0\u8226 	}Now find the model of your device, connect device to computer, open iTunes, open the tab of your device, and click on the Serial Number, until "Model Identifier" shows up, this is your device model\
+{\listtext	\uc0\u8226 	}Cd into where the scripts are: e.g. 
+\f2 \cf3 cd ~/Downloads/A5-A6X-Blobs-Dumper-master/
+\f1 \cf0 \
+{\listtext	\uc0\u8226 	}Now find the model of your device, connect device to computer, open iTunes, open the tab of your device, and click on the Serial Number, until "Model Identifier" or \'93Product Type\'94 shows up, this is your device model\
 {\listtext	\uc0\u8226 	}Also note down the iOS version your device is currently on for later!\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
@@ -78,8 +80,9 @@ Confirmed to work on Mountain Lion (10.8) and Mavericks (10.9)\cf0 \
 \fs28 \cf0 \ulnone {\listtext	\uc0\u8226 	}Go back to your terminal window, and press Control + C on your keyboard.\
 {\listtext	\uc0\u8226 	}Now run ./dumpblobs <device model> <ios version>\
 {\listtext	\uc0\u8226 	}Where device model is your device's model that you got at the start, and iOS version is the version of iOS your device is currently running, for example, if I had an iPhone 4S running iOS 8.4.1, and I wanted to dump the blobs for it, I'd type: ./dumpblobs iPhone4,1 8.4.1\
-{\listtext	\uc0\u8226 	}This will make a minute or too, and if you are on Mac OS X El Capitan or above, this may not work, and you'll just have to reboot your device, this only seems to work on Yosemite or below. It definitely works on Mountain Lion (10.8), and Mavericks (10.9)\
-{\listtext	\uc0\u8226 	}You should now validate the blobs with img4tool\
+{\listtext	\uc0\u8226 	}This will make a minute or too, and if you are on Mac OS X El Capitan or above, this may not work, and you'll just have to reboot your device, this step only seems to work on Yosemite or below. It definitely works on Mountain Lion (10.8), Mavericks (10.9), and Yosemite (10.10)\
+\ls6\ilvl0{\listtext	\uc0\u8226 	}Your Blobs will be saved onto your Desktop (~/Desktop)\
+{\listtext	\uc0\u8226 	}Don\'92t lose this file, email it to yourself, upload it to cloud services, burn it to a CD, back it up. Never lose it!\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 \cf0 \
 \
@@ -97,12 +100,12 @@ Confirmed to work on Mountain Lion (10.8) and Mavericks (10.9)\cf0 \
 \cf0 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
-\fs26 \cf3 Bash scripts and this readme by RossDarker\
+\fs26 \cf4 Bash scripts and this readme by RossDarker\
 rossdark3r@gmail.com\
 \
 Thanks to dayt0n for Odysseus.\
 Thanks to s0uthwest, encounter and tihmstar for TSSChecker.\
 Thanks to 
-\f2 \cf4 pod2g, tom3q, planetbeing, geohot and posixninja for iRecovery.
+\f2 \cf5 pod2g, tom3q, planetbeing, geohot and posixninja for iRecovery.
 \f1\fs28 \cf0 \
 }
