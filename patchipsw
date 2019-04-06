@@ -102,7 +102,8 @@ echo ""
 if [ -e "baseband.tar" ]; then
 	echo "Successfully received baseband from device, if it has one"
 else
-	echo "Couldn't connect to device, install OpenSSH from Cydia"
+	echo "Couldn't connect to device, install OpenSSH from Cydia, or run: rm ~/.ssh/known_hosts, then try again."
+	exit
 fi
 echo ""
 echo "Patching IPSW"
