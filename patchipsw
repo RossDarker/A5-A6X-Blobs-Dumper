@@ -113,8 +113,8 @@ if [ -e "custom.ipsw" ]; then
 	echo "Successfully created custom IPSW"
 else
 	echo ""
-	echo "Did not succeed, trying without -memory..."
-	./ipsw downloaded.ipsw custom.ipsw baseband.tar
+	echo "Did not succeed, trying without baseband.tar..."
+	./ipsw downloaded.ipsw custom.ipsw -memory
 fi
 echo ""
 echo "Extracting pwned iBSS..."
