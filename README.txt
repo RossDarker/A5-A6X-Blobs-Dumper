@@ -3,6 +3,8 @@ Dumping Onboard Blobs on A5 to A6X devices
 Note that Step 6 only works on Mac OS X versions that are Yosemite (10.10), or below.
 Confirmed to work on Mountain Lion (10.8), Mavericks (10.9) and Yosemite (10.10)
 
+Video: https://youtu.be/CpEwglZDheM
+
 Step 1 (Preparing 1):
 	•	On your device install these packages from Cydia: "Core Utilities", "Core Utilities (/bin)", and "OpenSSH"
 Step 2 (Device Info):
