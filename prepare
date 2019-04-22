@@ -121,12 +121,14 @@ if [ $cutios = "10" ]; then
 	echo "Downloading kloader for iOS 10"
 	curl -# -o kloader https://rossdarker.github.io/o/kloaders/10/kloader
 	rm odysseus-0.999.0/kloader
+	chmod +x kloader
 	mv kloader  odysseus-0.999.0/
 fi
 if [ $cutios = "5" ]; then
 	echo "Downloading kloader for iOS 5"
 	curl -# -o kloader https://rossdarker.github.io/o/kloaders/5/kloader
 	rm odysseus-0.999.0/kloader
+	chmod +x kloader
 	mv kloader  odysseus-0.999.0/
 fi
 
