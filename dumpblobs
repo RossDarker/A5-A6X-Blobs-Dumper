@@ -89,8 +89,11 @@ cd ~/Downloads/blobs/odysseus-0.999.0/macos/
 echo "Will attempt to send iBEC"
 echo ""
 ./irecovery -f pwnediBEC
-echo "Continuing in 5 seconds..."
-sleep 5
+echo "Continuing in 10 seconds..."
+echo "******"
+echo "UNPLUG THEN RECONNECT DEVICE TO COMPUTER NOW"
+echo "******"
+sleep 10
 echo "Sending commands to device"
 (echo -e "/send ../payload\ngo blobs\n/exit") | ./irecovery -s
 echo ""
@@ -111,7 +114,7 @@ if [ -e "myblob.plist" ]; then
 	echo "BLOBS SAVED AS: $ECID-$model-$ios.shsh"
 	echo "Blobs were successfully saved! This file has been moved onto your Desktop!"
 else
-	echo "Did NOT succeed. Try on a version of Mac OS X that is Yosemite or earlier (10.10 or earlier)"
+	echo "Did NOT succeed. Try again, or try on a version of Mac OS X that is Yosemite or earlier (10.10 or earlier)"
 	
 fi 
 

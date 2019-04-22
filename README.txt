@@ -1,8 +1,5 @@
 Dumping Onboard Blobs on A5 to A6X devices
 
-Note that Step 6 only works on Mac OS X versions that are Yosemite (10.10), or below.
-Confirmed to work on Mountain Lion (10.8), Mavericks (10.9) and Yosemite (10.10)
-
 Video: https://youtu.be/CpEwglZDheM
 
 Step 1 (Preparing 1):
@@ -35,8 +32,8 @@ Step 6 (Dumping the blobs):
 	•	Go back to your terminal window, and press Control + C on your keyboard.
 	•	Now run ./dumpblobs <device model> <ios version>
 	•	Where device model is your device's model that you got at the start, and iOS version is the version of iOS your device is currently running, for example, if I had an iPhone 4S running iOS 8.4.1, and I wanted to dump the blobs for it, I'd type: ./dumpblobs iPhone4,1 8.4.1
-	•	This will make a minute or too, and if you are on Mac OS X El Capitan or above, this may not work, and you'll just have to reboot your device, this step only seems to work on Yosemite or below. It definitely works on Mountain Lion (10.8), Mavericks (10.9), and Yosemite (10.10)
-	•	Your Blobs will be saved onto your Desktop (~/Desktop)
+	•	When asked, unplug your device then plug it back in to the computer! This is a very important step, the process will then continue in 10 seconds.
+	•	A few moments later, your Blobs will be saved onto your Desktop (~/Desktop)
 	•	Don’t lose this file, email it to yourself, upload it to cloud services, burn it to a CD, back it up. Never lose it!
 
 
@@ -50,6 +47,7 @@ To restore using your saved blobs:
 Bash scripts and this readme by RossDarker
 rossdark3r@gmail.com
 
-Thanks to dayt0n for Odysseus.
+Thanks to dayt0n and xerub for Odysseus.
 Thanks to s0uthwest, encounter and tihmstar for TSSChecker.
 Thanks to pod2g, tom3q, planetbeing, geohot and posixninja for iRecovery.
+Thanks to sha106b for the tip on getting irecovery working on Mojave.
