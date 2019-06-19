@@ -85,7 +85,8 @@ fi
 model=$1
 ios=$2
 echo "Calculating BuildID for iOS $ios"
-curl -# -o "tsschecker.zip" -L "https://github.com/s0uthwest/tsschecker/releases/download/353/tsschecker_macOS_v353.zip"
+tssurl=`curl -# https://api.github.com/repos/s0uthwest/tsschecker/releases/latest | grep ".zip" | grep https | grep macOS | cut -d "\"" -f 4`
+curl -# -o "tsschecker.zip" -L $tssurl
 unzip -qq tsschecker.zip
 echo "Please wait..."
 mainbdid=`./tsschecker -d $model -i $ios | grep "opening Buildmanifest for" | cut -d _ -f 3`
