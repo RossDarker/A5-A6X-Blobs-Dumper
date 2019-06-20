@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "`whoami`" = root ]; then
+  echo "Please do not run this as the root user"
+  exit
+fi
+
 if [ $# -lt 2 ]; then
     echo ""
     echo "[DESCRIPTION]"
@@ -20,7 +25,10 @@ if [ $# -gt 2 ]; then
     exit
 fi
 
-rm -r ~/Downloads/blobs
+if [ -e "/Users/`whoami`/Downloads/blobs" ]; then
+  rm -r ~/Downloads/blobs
+fi
+
 mkdir ~/Downloads/blobs
 cd ~/Downloads/blobs
 
