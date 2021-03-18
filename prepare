@@ -94,17 +94,23 @@ model=$1
 ios=$2
 echo "Calculating BuildID for iOS $ios"
 
-### tssurl=`curl -# https://api.github.com/repos/s0uthwest/tsschecker/releases/latest | grep ".zip" | grep https | grep macOS | cut -d "\"" -f 4`
-### curl -# -o "tsschecker.zip" -L $tssurl
-# curl -# -o "tsschecker.zip" -L https://rossdarker.github.io/o/tsschecker.zip
-# unzip -qq tsschecker.zip
-
 echo "Please wait..."
-
-# mainbdid=`./tsschecker -d $model -i $ios | grep "opening Buildmanifest for" | cut -d _ -f 3`
 
 curl -# -k -o "firmware" -L https://api.ipsw.me/v2.1/firmwares.json/
 mainbdid=`cat firmware | grep "$model"_"$ios"_"" | grep "http" | cut -d _ -f 3`
+
+if [[ $mainbdid == *"
+"* ]]; then
+    cat firmware | grep "$model"_"$ios"_"" | grep "http" | cut -d _ -f 3
+	echo "Multiple builds of iOS $ios exist, please enter the Build ID for the version you are on, exactly as one appears from the list above (case sensitive) :"
+	read newmainbdid
+	if [[ $mainbdid == *$newmainbdid* ]]; then
+		mainbdid=$newmainbdid
+	else
+		echo "Check that you typed in the Build ID correctly!"
+		exit
+	fi
+fi
 
 if [ "$mainbdid" = "" ]; then
 	echo "iOS $ios does not exist for $model!"
@@ -128,7 +134,6 @@ fi
 echo "Downloading Odysseus & FirmwareBundles"
 curl -# -o odysseus.zip https://dayt0n.com/odysseus/odysseus-0.999.zip
 unzip -qq odysseus.zip
-### rm __MACOSX
 rm odysseus.zip
 curl -# -o FirmwareBundles.zip https://rossdarker.github.io/o/FirmwareBundles.zip
 unzip -qq FirmwareBundles.zip
