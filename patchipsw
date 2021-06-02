@@ -92,11 +92,12 @@ if [ ! $buildid = $mainbdid ]; then
 	mv "$mainbdid.ipsw" odysseus-0.999.0/macos/current.ipsw
 fi
 
+cd ~/Downloads/blobs/odysseus-0.999.0/macos/
+if [ $2 != "skip" ]; then
 echo "Will attempt to extract baseband from device"
 echo ""
 echo "If asked, type yes, then the default password is \"alpine\""
 echo ""
-cd ~/Downloads/blobs/odysseus-0.999.0/macos/
 ./sshtool -s baseband.tar -p 22 $ip
 echo ""
 if [ -e "baseband.tar" ]; then
@@ -105,9 +106,17 @@ else
 	echo "Couldn't connect to device, install OpenSSH from Cydia, or run: rm ~/.ssh/known_hosts, then try again."
 	exit
 fi
+fi
+
 echo ""
 echo "Patching IPSW"
-./ipsw downloaded.ipsw custom.ipsw -memory baseband.tar
+
+if [ $2 != "skip" ]; then
+	./ipsw downloaded.ipsw custom.ipsw -memory baseband.tar
+else
+	./ipsw downloaded.ipsw custom.ipsw -memory
+fi
+
 if [ -e "custom.ipsw" ]; then
 	echo ""
 	echo "Successfully created custom IPSW"
@@ -117,6 +126,8 @@ else
 	./ipsw downloaded.ipsw custom.ipsw -memory
 fi
 echo ""
+
+
 echo "Extracting pwned iBSS..."
 ./xpwntool `unzip -j custom.ipsw 'Firmware/dfu/iBSS*' | awk '/inflating/{print $2}'` pwnediBSS
 echo "Extracting pwned iBEC..."
@@ -125,4 +136,3 @@ if [ $buildid = $mainbdid ]; then
 	mv "downloaded.ipsw" "current.ipsw"
 fi
 echo "Done"
-
