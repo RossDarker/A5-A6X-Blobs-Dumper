@@ -97,12 +97,27 @@ echo "Calculating BuildID for iOS $ios"
 echo "Please wait..."
 
 curl -# -k -o "firmware" -L https://api.ipsw.me/v2.1/firmwares.json/
-mainbdid=`cat firmware | grep "$model"_"$ios"_"" | grep "http" | cut -d _ -f 3`
+
+cutios=`echo $ios | cut -d . -f 1`
+
+if [ "$cutios" == "10" ]; then
+	if [[ $model = *"iPad"* ]]; then
+		cat firmware | grep "$ios"_"" | grep "iPad_32bit" | grep "filename" | cut -d "_" -f 4
+		mainbdid=`cat firmware | grep "$ios"_"" | grep "iPad_32bit" | grep "filename" | cut -d "_" -f 4`
+	fi
+	if [[ $model = *"iPhone"* ]]; then
+		cat firmware | grep "$ios"_"" | grep "iPhone_4.0_32bit" | grep "filename" | cut -d "_" -f 5
+		mainbdid=`cat firmware | grep "$ios"_"" | grep "iPhone_4.0_32bit" | grep "filename" | cut -d "_" -f 5`
+	fi
+else
+	mainbdid=`cat firmware | grep "$model"_"$ios"_"" | grep "http" | cut -d _ -f 3`
+	cat firmware | grep "$model"_"$ios"_"" | grep "http" | cut -d _ -f 3
+fi
+
 
 if [[ $mainbdid == *"
 "* ]]; then
-    cat firmware | grep "$model"_"$ios"_"" | grep "http" | cut -d _ -f 3
-	echo "Multiple builds of iOS $ios exist, please enter the Build ID for the version you are on, exactly as one appears from the list above (case sensitive) :"
+	echo "Multiple builds of iOS $ios may exist, please enter the Build ID for the version you are on, exactly as one appears from the list above (case sensitive) :"
 	read newmainbdid
 	if [[ $mainbdid == *$newmainbdid* ]]; then
 		mainbdid=$newmainbdid
@@ -141,8 +156,6 @@ rm FirmwareBundles.zip
 rm -r odysseus-0.999.0/macos/FirmwareBundles
 mv FirmwareBundles odysseus-0.999.0/macos/
 
-cutios=`echo $ios | cut -d . -f 1`
-echo $cutios
 if [ $cutios = "10" ]; then
 	echo "Downloading kloader for iOS 10"
 	curl -# -o kloader https://rossdarker.github.io/o/kloaders/10/kloader
@@ -160,4 +173,3 @@ fi
 
 echo ""
 echo "Done"
-
