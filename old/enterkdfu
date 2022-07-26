@@ -20,20 +20,7 @@ fi
 
 ip=$1
 
-if [ $OSTYPE = msys ]; then
-    echo "WINDOWS DETECTED"
-    path="/c/Users/`whoami`/Downloads"
-    platform="win"
-elif [[ $OSTYPE == "darwin"* ]]; then
-    echo "MAC OS DETECTED"
-    path="/Users/`whoami`/Downloads"
-    platform="macos"
-else
-    echo "Not supported"
-    exit
-fi
-
-cd $path/blobs/odysseus-0.999.0/$platform
+cd ~/Downloads/blobs/odysseus-0.999.0/macos
 
 if [ -e "pwnediBSS" ]; then
 	echo ""

@@ -20,21 +20,6 @@ if [ $# -gt 2 ]; then
     exit
 fi
 
-if [ $OSTYPE = msys ]; then
-    echo "WINDOWS DETECTED"
-    path="/c/Users/`whoami`/Downloads"
-    platform="win"
-    desktop="/c/Users/`whoami`/Desktop"
-elif [[ $OSTYPE == "darwin"* ]]; then
-    echo "MAC OS DETECTED"
-    path="/Users/`whoami`/Downloads"
-    platform="macos"
-    desktop="/Users/`whoami`/Desktop"
-else
-    echo "Not supported"
-    exit
-fi
-
 if [ $1 = "iPhone4,1" ]; then
     buildid="10B329"
 fi
@@ -99,45 +84,37 @@ echo "Build ID: $buildid"
 echo "iOS Version: $2"
 echo "Model: $model"
 
-cd $path/blobs/odysseus-0.999.0/$platform/
+cd ~/Downloads/blobs/odysseus-0.999.0/macos/
 
 echo "Will attempt to send iBEC"
 echo ""
 ./irecovery -f pwnediBEC
-echo "Continuing in 16 seconds..."
+echo "Continuing in 10 seconds..."
 echo "******"
 echo "UNPLUG THEN RECONNECT DEVICE TO COMPUTER NOW"
 echo "******"
-sleep 16
-
-if [ $platform = "macos" ]; then
-    echo "Sending commands to device"
-    (echo -e "/send ../payload\ngo blobs\n/exit") | ./irecovery -s
-    echo ""
-    sleep 1
-    ./irecovery -g myblob.dump
-    echo "Rebooting device"
-    sleep 1
-    ./irecovery -c reboot 
-    echo ""
-    sleep 1
-elif [ $platform = "win" ]; then
-    echo "Please wait..."
-    ./shshdump.exe
-    mv dump.shsh myblob.dump
-fi
-
+sleep 10
+echo "Sending commands to device"
+(echo -e "/send ../payload\ngo blobs\n/exit") | ./irecovery -s
+echo ""
+sleep 1
+./irecovery -g myblob.dump
+echo "Rebooting device"
+sleep 1
+./irecovery -c reboot 
+echo ""
+sleep 1
 ./ticket myblob.dump myblob.plist current.ipsw -z
 ./validate myblob.plist current.ipsw -z
 ECID=`./ticket myblob.dump myblob2.plist current.ipsw -z | grep ECID | cut -d = -f 2`
 sleep 1
 if [ -e "myblob.plist" ]; then
 	mv myblob.plist "$ECID-$model-$ios.shsh"
-	mv "$ECID-$model-$ios.shsh" $desktop
+	mv "$ECID-$model-$ios.shsh" ~/Desktop/
 	echo "BLOBS SAVED AS: $ECID-$model-$ios.shsh"
 	echo "Blobs were successfully saved! This file has been moved onto your Desktop!"
 else
-	echo "Did NOT succeed. First try running ./dumpblobs again (entering kDFU again if needed - usual fix), otherwise try on a different version of macOS."
+	echo "Did NOT succeed. Try again, or try on a version of Mac OS X that is Yosemite or earlier (10.10 or earlier)"
 	
 fi 
 

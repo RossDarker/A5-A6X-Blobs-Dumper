@@ -20,20 +20,7 @@ if [ $# -gt 2 ]; then
     exit
 fi
 
-if [ $OSTYPE = msys ]; then
-    echo "WINDOWS DETECTED"
-    path="/c/Users/`whoami`/Downloads"
-    platform="win"
-elif [[ $OSTYPE == "darwin"* ]]; then
-    echo "MAC OS DETECTED"
-    path="/Users/`whoami`/Downloads"
-    platform="macos"
-else
-    echo "Not supported"
-    exit
-fi
-
-cd $path/blobs
+cd ~/Downloads/blobs
 
 if [ $1 = "iPhone4,1" ]; then
     buildid="10B329"
@@ -100,12 +87,12 @@ echo "Build ID: $buildid"
 echo "Model: $model"
 echo "Devcice IP: $ip"
 
-mv "$buildid.ipsw" odysseus-0.999.0/$platform/downloaded.ipsw
+mv "$buildid.ipsw" odysseus-0.999.0/macos/downloaded.ipsw
 if [ ! $buildid = $mainbdid ]; then
-	mv "$mainbdid.ipsw" odysseus-0.999.0/$platform/current.ipsw
+	mv "$mainbdid.ipsw" odysseus-0.999.0/macos/current.ipsw
 fi
 
-cd $path/blobs/odysseus-0.999.0/$platform/
+cd ~/Downloads/blobs/odysseus-0.999.0/macos/
 if [ $2 != "skip" ]; then
 echo "Will attempt to extract baseband from device"
 echo ""
@@ -137,10 +124,6 @@ else
 	echo ""
 	echo "Did not succeed, trying without baseband.tar..."
 	./ipsw downloaded.ipsw custom.ipsw -memory
-fi
-if [ ! -e "custom.ipsw" ]; then
-    echo "Did not succeed, trying without -memory..."
-    ./ipsw downloaded.ipsw custom.ipsw
 fi
 echo ""
 

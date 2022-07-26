@@ -5,7 +5,6 @@ if [ "`whoami`" = root ]; then
   exit
 fi
 
-
 if [ $# -lt 2 ]; then
     echo ""
     echo "[DESCRIPTION]"
@@ -26,26 +25,12 @@ if [ $# -gt 2 ]; then
     exit
 fi
 
-if [ $OSTYPE = msys ]; then
-	echo "WINDOWS DETECTED"
-	path="/c/Users/`whoami`/Downloads"
-	platform="win"
-elif [[ $OSTYPE == "darwin"* ]]; then
-	echo "MAC OS DETECTED"
-	path="/Users/`whoami`/Downloads"
-	platform="macos"
-else
-	echo "Not supported"
-	exit
+if [ -e "/Users/`whoami`/Downloads/blobs" ]; then
+  rm -r ~/Downloads/blobs
 fi
 
-
-if [ -e "$path/blobs" ]; then
-  rm -r $path/blobs
-fi
-
-mkdir $path/blobs
-cd $path/blobs
+mkdir ~/Downloads/blobs
+cd ~/Downloads/blobs
 
 if [ $1 = "iPhone4,1" ]; then
     buildid="10B329"
@@ -184,14 +169,6 @@ if [ $cutios = "5" ]; then
 	rm odysseus-0.999.0/kloader
 	chmod +x kloader
 	mv kloader  odysseus-0.999.0/
-fi
-
-if [ $platform = "win" ]; then
-	echo "Downloading xpwn for Windows"
-	curl -# -o xpwn_win.zip https://rossdarker.github.io/o/xpwn_win.zip
-	unzip -qq xpwn_win.zip -d odysseus-0.999.0/
-	rm xpwn_win.zip
-	mv odysseus-0.999.0/macos/FirmwareBundles/ odysseus-0.999.0/win/FirmwareBundles
 fi
 
 echo ""
