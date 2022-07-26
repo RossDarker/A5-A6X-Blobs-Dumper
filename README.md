@@ -8,18 +8,24 @@
 ## Usage
 
  1. Download required files (IPSW's, Odysseus  & FirmwareBundles)
- `./prepare <device model> <ios version>` 
+ 
+    `./prepare <device model> <ios version>` 
+ 
  e.g. `./prepare iPhone4,1 8.4.1`
 
  2. Extract baseband, build custom IPSW, and extract iBEC & iBSS
-`./patchipsw <device model> <device IP>`
+ 
+     `./patchipsw <device model> <device IP>`
+
 e.g. `./patchipsw iPhone4,1 192.168.1.14`
 
  3. Enter kDFU mode using pwned iBSS
-`./enterkdfu <device IP>`
+ 
+    `./enterkdfu <device IP>`
 
  4. Send pwned iBEC to device in kDFU mode then dump onboard blobs
-`./dumpblobs <device model> <ios version>`
+ 
+    `./dumpblobs <device model> <ios version>`
 
 
 ## Thanks
