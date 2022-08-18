@@ -33,7 +33,7 @@ else
     exit
 fi
 
-cd $path/blobs
+cd "$path/blobs"
 
 if [ $1 = "iPhone4,1" ]; then
     buildid="10B329"
@@ -105,7 +105,7 @@ if [ ! $buildid = $mainbdid ]; then
 	mv "$mainbdid.ipsw" odysseus-0.999.0/$platform/current.ipsw
 fi
 
-cd $path/blobs/odysseus-0.999.0/$platform/
+cd "$path/blobs/odysseus-0.999.0/$platform/"
 if [ $2 != "skip" ]; then
 echo "Will attempt to extract baseband from device"
 echo ""

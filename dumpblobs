@@ -99,7 +99,7 @@ echo "Build ID: $buildid"
 echo "iOS Version: $2"
 echo "Model: $model"
 
-cd $path/blobs/odysseus-0.999.0/$platform/
+cd "$path/blobs/odysseus-0.999.0/$platform/"
 
 echo "Will attempt to send iBEC"
 echo ""
@@ -133,7 +133,7 @@ ECID=`./ticket myblob.dump myblob2.plist current.ipsw -z | grep ECID | cut -d = 
 sleep 1
 if [ -e "myblob.plist" ]; then
 	mv myblob.plist "$ECID-$model-$ios.shsh"
-	mv "$ECID-$model-$ios.shsh" $desktop
+	mv "$ECID-$model-$ios.shsh" "$desktop"
 	echo "BLOBS SAVED AS: $ECID-$model-$ios.shsh"
 	echo "Blobs were successfully saved! This file has been moved onto your Desktop!"
 else

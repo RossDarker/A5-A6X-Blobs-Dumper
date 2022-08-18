@@ -33,7 +33,7 @@ else
     exit
 fi
 
-cd $path/blobs/odysseus-0.999.0/$platform
+cd "$path/blobs/odysseus-0.999.0/$platform"
 
 if [ -e "pwnediBSS" ]; then
 	echo ""

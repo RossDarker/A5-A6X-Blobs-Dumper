@@ -44,8 +44,8 @@ if [ -e "$path/blobs" ]; then
   rm -r $path/blobs
 fi
 
-mkdir $path/blobs
-cd $path/blobs
+mkdir "$path/blobs"
+cd "$path/blobs"
 
 if [ $1 = "iPhone4,1" ]; then
     buildid="10B329"
