@@ -41,7 +41,7 @@ fi
 
 
 if [ -e "$path/blobs" ]; then
-  rm -r $path/blobs
+  rm -r "$path/blobs"
 fi
 
 mkdir "$path/blobs"
