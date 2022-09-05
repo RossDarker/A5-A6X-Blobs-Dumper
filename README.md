@@ -1,7 +1,7 @@
 # A5-A6X Blobs Dumper
 
 - **Dump blobs on A5-A6X 32-bit iOS devices**
-- **macOS and Windows supported**
+- **macOS and (experimental) Windows support**
 - **Jailbreak required**
 - **See the [Wiki Page](https://github.com/RossDarker/A5-A6X-Blobs-Dumper/wiki) for step-by-step instructions**
 - **See [Troubleshooting](https://github.com/RossDarker/A5-A6X-Blobs-Dumper/wiki/Troubleshooting) if you run into problems**
