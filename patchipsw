@@ -21,11 +21,11 @@ if [ $# -gt 2 ]; then
 fi
 
 if [ $OSTYPE = msys ]; then
-    echo "WINDOWS DETECTED"
+    echo "Windows Detected"
     path="/c/Users/`whoami`/Downloads"
     platform="win"
 elif [[ $OSTYPE == "darwin"* ]]; then
-    echo "MAC OS DETECTED"
+    echo "macOS Detected"
     path="/Users/`whoami`/Downloads"
     platform="macos"
 else
@@ -96,7 +96,7 @@ fi
 model=$1
 ip=$2
 mainbdid=`cat mainbdid`
-echo "Build ID: $buildid"
+echo "Build ID: $mainbdid"
 echo "Model: $model"
 echo "Devcice IP: $ip"
 

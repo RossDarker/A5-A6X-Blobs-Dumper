@@ -21,12 +21,12 @@ if [ $# -gt 2 ]; then
 fi
 
 if [ $OSTYPE = msys ]; then
-    echo "WINDOWS DETECTED"
+    echo "Windows Detected"
     path="/c/Users/`whoami`/Downloads"
     platform="win"
     desktop="/c/Users/`whoami`/Desktop"
 elif [[ $OSTYPE == "darwin"* ]]; then
-    echo "MAC OS DETECTED"
+    echo "macOS Detected"
     path="/Users/`whoami`/Downloads"
     platform="macos"
     desktop="/Users/`whoami`/Desktop"
@@ -95,7 +95,6 @@ fi
 
 model=$1
 ios=$2
-echo "Build ID: $buildid"
 echo "iOS Version: $2"
 echo "Model: $model"
 

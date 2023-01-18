@@ -21,11 +21,11 @@ fi
 ip=$1
 
 if [ $OSTYPE = msys ]; then
-    echo "WINDOWS DETECTED"
+    echo "Windows Detected"
     path="/c/Users/`whoami`/Downloads"
     platform="win"
 elif [[ $OSTYPE == "darwin"* ]]; then
-    echo "MAC OS DETECTED"
+    echo "macOS Detected"
     path="/Users/`whoami`/Downloads"
     platform="macos"
 else
@@ -48,10 +48,10 @@ echo "Attempting to enter kDFU"
 echo ""
 echo "If asked, type yes, then the default password is \"alpine\""
 echo ""
-echo "WHEN YOUR DEVICE TURNS OFF, (RE)PLUG YOUR DEVICE INTO YOUR COMPUTER, PRESS CONTROL+C, AND PROCEED TO \"./dumpblobs\". ALSO DON'T TOUCH ITUNES"
+echo "WHEN YOUR DEVICE TURNS OFF, (RE)PLUG YOUR DEVICE INTO YOUR COMPUTER, PRESS CONTROL+C, AND PROCEED TO \"./dumpblobs\". IGNORE ITUNES"
 echo ""
 ./sshtool -k ../kloader -b pwnediBSS -p 22 $ip
 echo ""
-echo "IF YOUR DEVICE DID NOT TURN OFF, INSTALL \"Core Utilities\" AND \"Core Utilities (/bin)\" AND \"OpenSSH\" FROM CYDIA AND THEN RUN \"./enterkdfu\" AGAIN"
+echo "IF YOUR DEVICE DID NOT TURN OFF, SEE TROUBLESHOOTING"
 echo ""
 

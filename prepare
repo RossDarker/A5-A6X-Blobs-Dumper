@@ -27,11 +27,11 @@ if [ $# -gt 2 ]; then
 fi
 
 if [ $OSTYPE = msys ]; then
-	echo "WINDOWS DETECTED"
+	echo "Windows Detected"
 	path="/c/Users/`whoami`/Downloads"
 	platform="win"
 elif [[ $OSTYPE == "darwin"* ]]; then
-	echo "MAC OS DETECTED"
+	echo "macOS Detected"
 	path="/Users/`whoami`/Downloads"
 	platform="macos"
 else
@@ -113,6 +113,11 @@ echo "Please wait..."
 
 curl -# -k -o "firmware" -L https://api.ipsw.me/v2.1/firmwares.json/
 
+if ! [ -e "firmware" ]; then
+	echo "Could not get firmware file."
+	exit
+fi
+
 cutios=`echo $ios | cut -d . -f 1`
 
 if [ "$cutios" == "10" ]; then
@@ -143,7 +148,7 @@ if [[ $mainbdid == *"
 fi
 
 if [ "$mainbdid" = "" ]; then
-	echo "iOS $ios does not exist for $model!"
+	echo "Could not find iOS $ios for $model!"
 	exit
 fi
 
@@ -162,7 +167,7 @@ else
 	curl -# -k -o "$model_$mainbdid.ipsw" -L "https://api.ipsw.me/v4/ipsw/download/$model/$mainbdid"
 fi
 echo "Downloading Odysseus & FirmwareBundles"
-curl -# -o odysseus.zip https://dayt0n.com/odysseus/odysseus-0.999.zip
+curl -# -o odysseus.zip https://rossdarker.github.io/o/odysseus-0.999.zip
 unzip -qq odysseus.zip
 rm odysseus.zip
 curl -# -o FirmwareBundles.zip https://rossdarker.github.io/o/FirmwareBundles.zip
