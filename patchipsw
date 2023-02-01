@@ -35,67 +35,10 @@ fi
 
 cd "$path/blobs"
 
-if [ $1 = "iPhone4,1" ]; then
-    buildid="10B329"
-fi
-if [ $1 = "iPhone5,1" ]; then
-    buildid="10B329"
-fi
-if [ $1 = "iPhone5,2" ]; then
-    buildid="10B329"
-fi
-if [ $1 = "iPhone5,3" ]; then
-    buildid="11B511"
-fi
-if [ $1 = "iPhone5,4" ]; then
-    buildid="11B651"
-fi
-if [ $1 = "iPod5,1" ]; then
-    buildid="10B329"
-fi
-if [ $1 = "iPad2,1" ]; then
-    buildid="10B329"
-fi
-if [ $1 = "iPad2,2" ]; then
-    buildid="11D257"
-fi
-if [ $1 = "iPad2,3" ]; then
-    buildid="12H321"
-fi
-if [ $1 = "iPad2,4" ]; then
-    buildid="10B329"
-fi
-if [ $1 = "iPad2,5" ]; then
-    buildid="10B329"
-fi
-if [ $1 = "iPad2,6" ]; then
-    buildid="12H321"
-fi
-if [ $1 = "iPad2,7" ]; then
-    buildid="12H321"
-fi
-if [ $1 = "iPad3,1" ]; then
-    buildid="10B146"
-fi
-if [ $1 = "iPad3,2" ]; then
-    buildid="12H321"
-fi
-if [ $1 = "iPad3,3" ]; then
-    buildid="10B329"
-fi
-if [ $1 = "iPad3,4" ]; then
-    buildid="10B329"
-fi
-if [ $1 = "iPad3,5" ]; then
-    buildid="12H321"
-fi
-if [ $1 = "iPad3,6" ]; then
-    buildid="10B329"
-fi
-
 model=$1
 ip=$2
 mainbdid=`cat mainbdid`
+buildid=`cat extbdid`
 echo "Build ID: $mainbdid"
 echo "Model: $model"
 echo "Devcice IP: $ip"
