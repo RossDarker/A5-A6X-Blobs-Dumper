@@ -5,7 +5,6 @@ if [ "`whoami`" = root ]; then
   exit
 fi
 
-
 if [ $# -lt 2 ]; then
     echo ""
     echo "[DESCRIPTION]"
@@ -39,6 +38,10 @@ else
 	exit
 fi
 
+if ! [[ `curl -sS "https://rossdarker.github.io/o"` && `curl -sS "https://api.ipsw.me/v4/"` ]] ; then
+	echo "Could not connect to Github or IPSW.me - See Troubleshooting"
+	exit
+fi
 
 if [ -e "$path/blobs" ]; then
   rm -r "$path/blobs"
