@@ -27,6 +27,12 @@ if [ $OSTYPE = msys ]; then
     desktop="/c/Users/`whoami`/Desktop"
 elif [[ $OSTYPE == "darwin"* ]]; then
     echo "macOS Detected"
+
+    if [ `date '+%Y'` != "2012" ]; then
+        echo -e "******\nPlease set the System Date to the year 2012, then run again!\n******"
+        exit
+    fi
+
     path="/Users/`whoami`/Downloads"
     platform="macos"
     desktop="/Users/`whoami`/Desktop"
@@ -77,6 +83,7 @@ if [ -e "myblob.plist" ]; then
 	mv "$ECID-$model-$ios.shsh" "$desktop"
 	echo "BLOBS SAVED AS: $ECID-$model-$ios.shsh"
 	echo "Blobs were successfully saved! This file has been moved onto your Desktop!"
+    echo "*** Remember to change the System Date back ***"
 else
 	echo "Did NOT succeed. First try running ./dumpblobs again (entering kDFU again if needed - usual fix), otherwise try on a different version of macOS."
 	

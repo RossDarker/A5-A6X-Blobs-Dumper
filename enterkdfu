@@ -48,7 +48,7 @@ echo "Attempting to enter kDFU"
 echo ""
 echo "If asked, type yes, then the default password is \"alpine\""
 echo ""
-echo "WHEN YOUR DEVICE TURNS OFF, (RE)PLUG YOUR DEVICE INTO YOUR COMPUTER, PRESS CONTROL+C, AND PROCEED TO \"./dumpblobs\". IGNORE ITUNES"
+echo "WHEN YOUR DEVICE TURNS OFF, DISCONNECT THEN RECONNECT YOUR DEVICE TO YOUR COMPUTER, PRESS CONTROL+C, AND PROCEED TO \"./dumpblobs\". IGNORE ITUNES"
 echo ""
 ./sshtool -k ../kloader -b pwnediBSS -p 22 $ip
 echo ""
