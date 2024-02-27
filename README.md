@@ -1,5 +1,9 @@
 # A5-A6X Blobs Dumper
 
+# See [Legacy iOS Kit](https://github.com/LukeZGD/Legacy-iOS-Kit) to save onboard blobs
+
+## Original:
+
 - **Dump blobs on A5-A6X 32-bit iOS devices**
 - **macOS required**
 - **Jailbreak required**
@@ -34,5 +38,3 @@
 - [s0uthwest](https://github.com/s0uthwest), [encounter](https://github.com/encounter) and [tihmstar](https://github.com/tihmstar) for TSSChecker.
 - [westbaer](https://github.com/westbaer), [@pod2g](https://twitter.com/pod2g), tom3q, planetbeing, [geohot](https://github.com/geohot) and [posixninja](https://github.com/posixninja) for iRecovery.
 - [planetbeing](https://github.com/planetbeing) for xpwn
-- [LukeZGD](https://github.com/LukeZGD) for binaries & some code for Windows support
-- [Devjam81](https://github.com/Devjam81) for Odysseus-Windows
