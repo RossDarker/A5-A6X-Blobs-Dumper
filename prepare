@@ -25,18 +25,15 @@ if [ $# -gt 2 ]; then
     exit
 fi
 
-if [ $OSTYPE = msys ]; then
-	echo "Windows Detected"
-	path="/c/Users/`whoami`/Downloads"
-	platform="win"
-elif [[ $OSTYPE == "darwin"* ]]; then
-	echo "macOS Detected"
-	path="/Users/`whoami`/Downloads"
-	platform="macos"
+if [[ $OSTYPE == "darwin"* ]]; then
+    echo "macOS Detected"
+    path="/Users/`whoami`/Downloads"
+    platform="macos"
 else
-	echo "Not supported"
-	exit
+    echo "Not supported"
+    exit
 fi
+
 
 if ! [[ `curl -sS "https://rossdarker.github.io/o"` && `curl -sS "https://api.ipsw.me/v4/"` ]] ; then
 	echo "Could not connect to Github or IPSW.me - See Troubleshooting"
@@ -132,13 +129,13 @@ if [ $cutios = "5" ]; then
 	mv kloader  odysseus-0.999.0/
 fi
 
-if [ $platform = "win" ]; then
-	echo "Downloading xpwn for Windows"
-	curl -# -o xpwn_win.zip https://rossdarker.github.io/o/xpwn_win.zip
-	unzip -qq xpwn_win.zip -d odysseus-0.999.0/
-	rm xpwn_win.zip
-	mv odysseus-0.999.0/macos/FirmwareBundles/ odysseus-0.999.0/win/FirmwareBundles
-fi
+# if [ $platform = "win" ]; then
+# 	echo "Downloading xpwn for Windows"
+# 	curl -# -o xpwn_win.zip https://rossdarker.github.io/o/xpwn_win.zip
+# 	unzip -qq xpwn_win.zip -d odysseus-0.999.0/
+# 	rm xpwn_win.zip
+# 	mv odysseus-0.999.0/macos/FirmwareBundles/ odysseus-0.999.0/win/FirmwareBundles
+# fi
 
 echo ""
 echo "Done"

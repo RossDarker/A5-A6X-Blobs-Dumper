@@ -20,12 +20,12 @@ if [ $# -gt 2 ]; then
     exit
 fi
 
-if [ $OSTYPE = msys ]; then
-    echo "Windows Detected"
-    path="/c/Users/`whoami`/Downloads"
-    platform="win"
-    desktop="/c/Users/`whoami`/Desktop"
-elif [[ $OSTYPE == "darwin"* ]]; then
+# if [ $OSTYPE = msys ]; then
+#     echo "Windows Detected"
+#     path="/c/Users/`whoami`/Downloads"
+#     platform="win"
+#     desktop="/c/Users/`whoami`/Desktop"
+if [[ $OSTYPE == "darwin"* ]]; then
     echo "macOS Detected"
 
     if [ `date '+%Y'` != "2012" ]; then
@@ -68,10 +68,10 @@ if [ $platform = "macos" ]; then
     ./irecovery -c reboot 
     echo ""
     sleep 1
-elif [ $platform = "win" ]; then
-    echo "Please wait..."
-    ./shshdump.exe
-    mv dump.shsh myblob.dump
+# elif [ $platform = "win" ]; then
+#     echo "Please wait..."
+#     ./shshdump.exe
+#     mv dump.shsh myblob.dump
 fi
 
 ./ticket myblob.dump myblob.plist current.ipsw -z

@@ -20,11 +20,7 @@ if [ $# -gt 2 ]; then
     exit
 fi
 
-if [ $OSTYPE = msys ]; then
-    echo "Windows Detected"
-    path="/c/Users/`whoami`/Downloads"
-    platform="win"
-elif [[ $OSTYPE == "darwin"* ]]; then
+if [[ $OSTYPE == "darwin"* ]]; then
     echo "macOS Detected"
     path="/Users/`whoami`/Downloads"
     platform="macos"
